@@ -6,13 +6,13 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 15:59:36 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/01 16:32:23 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/01 17:10:35 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	check(const char *haystack, const char *needle, size_t *n, int *g)
+static int	check(const char *haystack, const char *needle, size_t *n, int *g)
 {	
 	int	v;
 

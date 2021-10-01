@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/09 12:59:50 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/01 15:45:54 by mkoyamba         ###   ########.fr       */
+/*   Created: 2021/10/01 15:33:31 by mkoyamba          #+#    #+#             */
+/*   Updated: 2021/10/01 15:45:44 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 {
-	int	g;
-	int	s;
-	int	n;
-	int	nombre;
+	unsigned int	n;
 
-	nombre = 0;
 	n = 0;
-	s = 1;
-	while (str[n] == ' ' || str[n] == '\t' || str[n] == '\n'
-		|| str[n] == '\r' || str[n] == '\v' || str[n] == '\f')
-		n++;
-	if (str[n] == '+' || str[n] == '-')
+	if (dstsize != 0)
 	{
-		if (str[n] == '-')
-			s = -s;
-		n++;
+		while (src[n] != '\0' && n < dstsize)
+		{
+			dst[n] = src[n];
+			n++;
+		}
+		dst[n] = '\0';
 	}
-	g = 0;
-	while (str[n + g] >= '0' && str[n + g] <= '9')
-	{
-		nombre *= 10;
-		nombre += str[n + g] - '0';
-		g++;
-	}
-	return (nombre * s);
+	return (n);
 }

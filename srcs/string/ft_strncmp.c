@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/09 12:59:50 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/01 15:45:54 by mkoyamba         ###   ########.fr       */
+/*   Created: 2021/10/01 15:54:40 by mkoyamba          #+#    #+#             */
+/*   Updated: 2021/10/01 15:56:10 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	g;
-	int	s;
-	int	n;
-	int	nombre;
+	unsigned int	a;
 
-	nombre = 0;
-	n = 0;
-	s = 1;
-	while (str[n] == ' ' || str[n] == '\t' || str[n] == '\n'
-		|| str[n] == '\r' || str[n] == '\v' || str[n] == '\f')
-		n++;
-	if (str[n] == '+' || str[n] == '-')
+	a = 0;
+	while (s1[a] && a < n)
 	{
-		if (str[n] == '-')
-			s = -s;
-		n++;
+		if (s1[a] != s2[a])
+			return (s1[a] - s2[a]);
+		a++;
 	}
-	g = 0;
-	while (str[n + g] >= '0' && str[n + g] <= '9')
-	{
-		nombre *= 10;
-		nombre += str[n + g] - '0';
-		g++;
-	}
-	return (nombre * s);
+	if (s2[a] == '\0' || a == n)
+		return (0);
+	else
+		return (-s2[a]);
 }

@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/01 15:33:31 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/04 09:41:53 by mkoyamba         ###   ########.fr       */
+/*   Created: 2021/10/04 09:16:09 by mkoyamba          #+#    #+#             */
+/*   Updated: 2021/10/04 09:31:20 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
-#include <stddef.h>
+#include "libft.h"
 
-size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
+char	*ft_strdup(const char *s1)
 {
-	unsigned int	n;
+	char	*dest;
+	int		a;
 
-	n = 0;
-	if (dstsize == 0)
-		return (NULL);
-	else
+	dest = malloc((ft_strlen(s1) + 1) * sizeof(char));
+	if (!dest)
 	{
-		while (src[n] != '\0' && n < dstsize)
-		{
-			dst[n] = src[n];
-			n++;
-		}
-		dst[n] = '\0';
+		errno = ENOMEM;
+		return (NULL);
 	}
-	return ((size_t)ft_strlen(src));
-}
-
-int	main(void)
-{
-	
+	a = 0;
+	while (s1[a] != '\0')
+	{
+		dest[a] = s1[a];
+		a++;
+	}
+	dest[a] = '\0';
+	return (dest);
 }

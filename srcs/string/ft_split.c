@@ -6,12 +6,25 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 10:30:32 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/04 12:10:25 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/04 14:39:49 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+// #include "wraloc.h"
+
+void	mk_free(char **result, int a)
+{
+	int	n;
+
+	n = 0;
+	while (n < a)
+	{
+		free(result[n]);
+		n++;
+	}
+	free(result);
+}
 
 static int	mk_word(const char *s, char c)
 {
@@ -20,7 +33,7 @@ static int	mk_word(const char *s, char c)
 
 	i = 0;
 	n = 1;
-	if (!s)
+	if (!s || s[0] == '\0')
 		return (0);
 	while (s[i] != '\0')
 	{
@@ -47,15 +60,17 @@ char	*mk_strpush(const char *s, char c, int *n)
 	int		i;
 	int		g;
 	char	*tab;
+	int		len;
 
 	i = *n;
 	g = 0;
 	while (s[i] != '\0' && s[i] != c)
 		i++;
-	tab = malloc((i + 1) * sizeof(char));
+	len = i - *n;
+	tab = malloc((len + 1) * sizeof(char));
 	if (!tab)
 		return (NULL);
-	while (g < i && s[*n] != '\0')
+	while (g < len && s[*n] != '\0')
 	{
 		tab[g] = s[*n];
 		g++;
@@ -73,16 +88,25 @@ char	**ft_split(char const *s, char c)
 	int		a;
 
 	result = malloc((mk_word(s, c) + 1) * sizeof(char *));
+	if (!result)
+		return (NULL);
 	n = 0;
 	a = 0;
 	while (a < mk_word(s, c))
 	{
 		result[a] = mk_strpush(s, c, &n);
+		if (!result[a])
+		{
+			mk_free(result, mk_word(s, c));
+			return (NULL);
+		}
 		a++;
 	}
 	result[a] = NULL;
 	return (result);
 }
+
+#include <stdio.h>
 
 int	main(void)
 {
@@ -90,12 +114,14 @@ int	main(void)
 	char	**result;
 
 	a = 0;
-	result = ft_split("abcde", 'c');
+	result = ft_split("cabcdefcghcij", 'c');
 	while (result[a] != NULL)
 	{
 		printf("%s\n", result[a]);
+		free(result[a]);
 		a++;
 	}
 	printf("%s\n", result[a]);
+	free(result);
 	return (0);
 }

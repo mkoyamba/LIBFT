@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 16:54:55 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/01 17:00:25 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/05 13:29:51 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putnbr_fd(int n, int fd)
 	unsigned int	t;
 	char			c;
 
+	if (fd < 0)
+		return ;
 	if (n < 0)
 	{
 		t = -n;

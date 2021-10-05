@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcmp.c                                           :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 14:37:37 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/05 14:58:08 by mkoyamba         ###   ########.fr       */
+/*   Created: 2021/10/05 15:26:26 by mkoyamba          #+#    #+#             */
+/*   Updated: 2021/10/05 15:47:44 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	memcmp(const void *s1, const void *s2, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*t1;
-	char	*t2;
-	int		a;
+	char	*tdst;
+	char	*tsrc;
 
-	a = 0;
-	if (n == 0)
-		return (0);
-	t1 = (char *)s1;
-	t2 = (char *)s2;
-	while (a < n && t1[a] == t2[a])
-		a++;
-	return ((int)(t1[a] - t2[a]));
+	tdst = (char *)dst;
+	tsrc = (char *)src;
+	if (dst > src)
+	{
+		while (len - 1 != 0)
+		{
+			tdst[len - 1] = tsrc[len - 1];
+			len--;
+		}
+		tdst[len - 1] = tsrc[len - 1];
+	}
+	else
+		ft_memcpy(dst, src, len);
 }

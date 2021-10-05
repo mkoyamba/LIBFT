@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcpy.c                                           :+:      :+:    :+:   */
+/*   memcmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 14:59:21 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/05 15:14:48 by mkoyamba         ###   ########.fr       */
+/*   Created: 2021/10/05 14:37:37 by mkoyamba          #+#    #+#             */
+/*   Updated: 2021/10/05 15:36:52 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*memcpy(void *restrict dst, const void *restrict src, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*tdst;
-	char	*tsrc;
+	char	*t1;
+	char	*t2;
 	int		a;
 
 	a = 0;
-	while (a < n)
-	{
-		tdst[a] = tsrc[a];
+	if (n == 0)
+		return (0);
+	t1 = (char *)s1;
+	t2 = (char *)s2;
+	while (a < n && t1[a] == t2[a])
 		a++;
-	}
-	return (dst);
+	return ((int)(t1[a] - t2[a]));
 }

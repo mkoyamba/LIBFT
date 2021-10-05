@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 15:33:31 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/04 10:00:59 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/05 13:14:46 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 {
-	unsigned int	n;
+	size_t	n;
 
 	n = 0;
 	while (src[n] != '\0' && n < dstsize - 1 && dstsize != 0)

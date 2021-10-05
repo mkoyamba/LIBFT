@@ -6,13 +6,13 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 10:30:32 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/05 08:43:35 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/05 08:49:09 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	mk_free(char **result, int a)
+static void	mk_free(char **result, int a)
 {
 	int	n;
 
@@ -50,7 +50,7 @@ static int	mk_word(const char *s, char c)
 	return (n);
 }
 
-char	*mk_strpush(const char *s, char c, int *n)
+static char	*mk_strpush(const char *s, char c, int *n)
 {
 	int		i;
 	int		g;

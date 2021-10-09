@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 09:45:03 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/05 10:21:17 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:50:33 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ static void	mk_begin_end(int *begin, int *end, const char *s1, const char *set)
 		*end = *end - 1;
 }
 
+static char	*vide(void)
+{
+	char	*result;
+
+	result = malloc(sizeof(char));
+	if (!result)
+		return (NULL);
+	result[0] = '\0';
+	return (result);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		begin;
@@ -44,11 +55,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		n;
 
 	n = 0;
-	if (!s1 || s1[0] == '\0')
+	if (!s1)
 		return (NULL);
 	if (!set || set[0] == '\0')
-		return ((char *)s1);
+		return (ft_strdup(s1));
 	mk_begin_end(&begin, &end, s1, set);
+	if (end == -1 || s1[0] == '\0')
+		return (vide());
 	result = malloc((end - begin + 2) * sizeof(char));
 	if (!result)
 		return (NULL);

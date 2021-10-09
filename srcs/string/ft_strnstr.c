@@ -6,22 +6,22 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 15:59:36 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/01 17:10:35 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:17:35 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	check(const char *haystack, const char *needle, size_t *n, int *g)
+static int	check(const char *haystack, const char *needle, size_t n, int g)
 {	
 	int	v;
 
 	v = 1;
-	while (needle[*g] != '\0' )
+	while (needle[g] != '\0' )
 	{
-		if (needle[*g] != haystack[*n + *g])
+		if (needle[g] != haystack[n + g])
 			v = 0;
-		*g = *g + 1;
+		g++;
 	}
 	return (v);
 }
@@ -34,7 +34,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	int		v;
 
 	c = 0;
-	if (len == 0)
+	if (len == 0 || !haystack || haystack[0] == '\0')
 		return (NULL);
 	if (needle[0] == '\0')
 		return ((char *)haystack);
@@ -46,7 +46,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		if (needle[0] == haystack[n])
 		{
 			g = 0;
-			v = check(haystack, needle, &n, &g);
+			v = check(haystack, needle, n, g);
 			if (v == 1)
 				return ((char *)haystack + n);
 		}

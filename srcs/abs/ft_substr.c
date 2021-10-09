@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 10:28:41 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/05 11:45:28 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:40:29 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,20 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	n = 0;
 	if (!s || start >= (unsigned int)ft_strlen((char *)s))
-		return (NULL);
+	{
+		result = malloc(sizeof(char));
+		if (!result)
+			return (NULL);
+		result[0] = '\0';
+		return (result);
+	}
 	while (s[start + n] && n < len)
 		n++;
 	result = malloc((n + 1) * sizeof(char));
+	if (!result)
+		return (NULL);
 	n = 0;
-	while (s[start] && n < len)
+	while (s[start + n] && n < len)
 	{
 		result[n] = s[start + n];
 		n++;

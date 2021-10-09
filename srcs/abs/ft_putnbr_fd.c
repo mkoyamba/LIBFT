@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 16:54:55 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/05 13:29:51 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/09 10:41:41 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 		t = n;
 	if (t > 9)
-		ft_putnbr(t / 10);
+		ft_putnbr_fd(t / 10, fd);
 	t %= 10;
 	c = t + '0';
 	write(fd, &c, 1);

@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 15:26:26 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/05 15:47:44 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/09 10:38:15 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	else
 		ft_memcpy(dst, src, len);
+	return (dst);
 }

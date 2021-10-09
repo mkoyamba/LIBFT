@@ -6,7 +6,7 @@
 #    By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/09 10:35:41 by mkoyamba          #+#    #+#              #
-#    Updated: 2021/10/09 15:11:35 by mkoyamba         ###   ########.fr        #
+#    Updated: 2021/10/09 18:13:57 by mkoyamba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,9 +66,7 @@ OBJB = $(BONUS:.c=.o)
 
 all: $(NAME)
 
-bonus : $(NAMEB)
-
-$(NAMEB): $(OBJ) $(OBJB)
+bonus :  $(OBJB) $(OBJ)
 	ar rc $(NAME) $(OBJ) $(OBJB)
 	ranlib $(NAME)
 

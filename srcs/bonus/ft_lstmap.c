@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 15:26:26 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/09 16:03:49 by mkoyamba         ###   ########.fr       */
+/*   Created: 2021/10/09 17:39:50 by mkoyamba          #+#    #+#             */
+/*   Updated: 2021/10/09 18:01:56 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*tdst;
-	char	*tsrc;
-
-	tdst = (char *)dst;
-	tsrc = (char *)src;
-	if (dst > src)
-	{
-		while (len - 1 != 0)
-		{
-			tdst[len - 1] = tsrc[len - 1];
-			len--;
-		}
-		tdst[len - 1] = tsrc[len - 1];
-	}
-	else
-		ft_memcpy(dst, src, len);
-	return (dst);
+	return (NULL);
 }

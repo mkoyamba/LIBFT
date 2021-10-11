@@ -6,13 +6,15 @@
 #    By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/09 10:35:41 by mkoyamba          #+#    #+#              #
-#    Updated: 2021/10/09 18:13:57 by mkoyamba         ###   ########.fr        #
+#    Updated: 2021/10/11 10:46:04 by mkoyamba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a
+
+INCLUDES = libft.h
 
 SRC =	ft_atoi.c \
 		ft_bzero.c \
@@ -66,7 +68,9 @@ OBJB = $(BONUS:.c=.o)
 
 all: $(NAME)
 
-bonus :  $(OBJB) $(OBJ)
+test : $(bonus)
+
+bonus : $(OBJB) $(OBJ)
 	ar rc $(NAME) $(OBJ) $(OBJB)
 	ranlib $(NAME)
 
@@ -75,7 +79,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 %.o: %.c
-	gcc $(FLAGS) -c $< -o $@
+	gcc $(FLAGS) -I $(INCLUDES) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(OBJB)
@@ -85,4 +89,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+.PHONY: all, clean, fclean, bonus, re

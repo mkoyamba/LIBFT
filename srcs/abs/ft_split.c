@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 10:30:32 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/05 08:49:09 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/11 16:15:03 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	mk_word(const char *s, char c)
 		return (0);
 	while (s[i] != '\0')
 	{
-		if (c == '\0' || s[i] == '\0')
+		if (c == '\0')
 			return (1);
 		if (s[i + 1] == '\0')
 			break ;
@@ -93,7 +93,7 @@ char	**ft_split(char const *s, char c)
 		result[a] = mk_strpush(s, c, &n);
 		if (!result[a])
 		{
-			mk_free(result, mk_word(s, c));
+			mk_free(result, a);
 			return (NULL);
 		}
 		a++;

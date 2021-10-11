@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 16:56:13 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/09 17:39:08 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/11 13:47:41 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (!lst)
+	if (!lst || !del)
 		return ;
-	del(lst);
-	free(lst);
+	del(lst->content);
+	if (lst)
+		free(lst);
 }

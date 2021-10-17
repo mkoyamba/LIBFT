@@ -3,18 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mploki <mploki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 12:59:50 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/01 16:37:35 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/10/17 14:30:58 by mploki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	mk_check_atoi(const char *str, int n, int s)
+{
+	int				a;
+	unsigned long	l;
+
+	a = 0;
+	l = 0;
+	while (str[n + a] >= '0' && str[n + a] <= '9')
+		a++;
+	if (a > 19 && s == 1)
+		return (-1);
+	if (a > 19 && s == -1)
+		return (0);
+	while (str[n] >= '0' && str[n] <= '9')
+	{
+		l *= 10;
+		l += str[n] - '0';
+		n++;
+	}
+	if (l > 9223372036854775807 && s == 1)
+		return (-1);
+	if (l > 9223372036854775807 && s == -1 && str[n - 1] > '8')
+		return (0);
+	return (1);
+}
+
 int	ft_atoi(const char *str)
 {
-	int	g;
 	int	s;
 	int	n;
 	int	nombre;
@@ -31,12 +56,13 @@ int	ft_atoi(const char *str)
 			s = -s;
 		n++;
 	}
-	g = 0;
-	while (str[n + g] >= '0' && str[n + g] <= '9')
+	if (mk_check_atoi(str, n, s) == -1 || mk_check_atoi(str, n, s) == 0)
+		return (mk_check_atoi(str, n, s));
+	while (str[n] >= '0' && str[n] <= '9')
 	{
 		nombre *= 10;
-		nombre += str[n + g] - '0';
-		g++;
+		nombre += str[n] - '0';
+		n++;
 	}
 	return (nombre * s);
 }

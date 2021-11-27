@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 09:45:03 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/11/27 12:22:15 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/11/27 14:01:35 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (ft_strdup(s1));
 	mk_begin_end(&begin, &end, s1, set);
 	if (!check(s1, set))
-		return (ft_strdup(""));
+		return (ft_strdup("\0"));
 	result = malloc((end - begin + 2) * sizeof(char));
 	if (!result)
 		return (NULL);

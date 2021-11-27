@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 17:39:50 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/11 17:32:31 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/11/27 13:52:07 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static t_list	*mk_lstdup(t_list *lst)
 	t_list	*temp_dup;
 	t_list	*temp_lst;
 
-	dup = malloc(sizeof(lst));
+	dup = malloc(sizeof(t_list));
 	if (!dup)
 		return (NULL);
 	dup->content = lst->content;
@@ -54,6 +54,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	if (!lst)
 		return (NULL);
 	result = mk_lstdup(lst);
+	if (!result)
+		return (NULL);
 	mk_lstiter(result, f);
 	return (result);
 }

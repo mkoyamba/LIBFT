@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 09:45:03 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/09 11:50:33 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/11/27 12:22:15 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,16 @@ static void	mk_begin_end(int *begin, int *end, const char *s1, const char *set)
 		*end = *end - 1;
 }
 
-static char	*vide(void)
+static int	check(char const *s1, char const *set)
 {
-	char	*result;
+	int	n;
 
-	result = malloc(sizeof(char));
-	if (!result)
-		return (NULL);
-	result[0] = '\0';
-	return (result);
+	n = 0;
+	while (mk_isinset(s1[n], set) && n < ft_strlen(s1))
+		n++;
+	if (n == ft_strlen(s1))
+		return (0);
+	return (1);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
@@ -55,13 +56,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		n;
 
 	n = 0;
-	if (!s1)
+	if (!s1 || s1[0] == '\0')
 		return (NULL);
-	if (!set || set[0] == '\0')
+	if (!set || !check(s1, set) || set[0] == '\0')
 		return (ft_strdup(s1));
 	mk_begin_end(&begin, &end, s1, set);
-	if (end == -1 || s1[0] == '\0')
-		return (vide());
+	if (!check(s1, set))
+		return (ft_strdup(""));
 	result = malloc((end - begin + 2) * sizeof(char));
 	if (!result)
 		return (NULL);

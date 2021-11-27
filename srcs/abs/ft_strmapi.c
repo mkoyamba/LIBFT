@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 13:17:26 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/09 12:51:20 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/11/27 11:32:49 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	result = malloc((ft_strlen(s) + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
-	while (s[n])
+	while (n < (unsigned int)ft_strlen(s))
 	{
 		result[n] = f(n, s[n]);
 		n++;
 	}
+	result[n] = '\0';
 	return (result);
 }

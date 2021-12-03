@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 14:59:21 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/09 10:37:47 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:41:24 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 	char	*tsrc;
 	size_t	a;
 
+	if (!src && !dst && n != 0)
+		return (NULL);
 	tdst = (char *)dst;
 	tsrc = (char *)src;
 	a = 0;

@@ -6,19 +6,17 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 15:06:11 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/05 09:11:29 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:43:48 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	int	n;
+	size_t	n;
 
 	n = 0;
-	if (!s)
-		return (0);
 	while (s[n])
 		n++;
 	return (n);

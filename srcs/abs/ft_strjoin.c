@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 08:46:43 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/09 12:05:39 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:49:13 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*result;
 
-	if ((!s1 && !s2) || (!s1 && s2[0] == '\0') || (!s2 && s1[0] == '\0')
-		|| (s1[0] == '\0' && s2[0] == '\0'))
-	{
-		result = malloc(sizeof(char));
-		if (!result)
-			return (NULL);
-		result[0] = '\0';
-		return (result);
-	}
+	if (!s1 || !s2)
+		return (NULL);
 	result = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!result)
 		return (NULL);

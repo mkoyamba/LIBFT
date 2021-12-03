@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 16:51:34 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/05 13:29:42 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:50:39 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (fd < 0)
+	if (fd < 0 || !s)
 		return ;
 	write(fd, s, ft_strlen(s));
 }

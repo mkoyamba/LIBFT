@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 09:44:52 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/11/27 10:26:23 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:38:38 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	str = (char *)s;
 	search = (char)c;
 	i = 0;
-	if (n == 0 || !s)
+	if (n == 0)
 		return (NULL);
 	while (i < n)
 	{

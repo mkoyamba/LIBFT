@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 15:26:26 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/12/03 14:52:39 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/12/10 12:40:17 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	tdst = (char *)dst;
 	tsrc = (const char *)src;
-	if (!tsrc || !*tsrc)
+	if (len == 0)
 		return (dst);
 	if (dst > src)
 	{
@@ -30,7 +30,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		}
 		tdst[len - 1] = tsrc[len - 1];
 	}
-	if (dst < src)
+	else
 		ft_memcpy(dst, src, len);
 	return (dst);
 }

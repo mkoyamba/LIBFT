@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 09:16:09 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/10/04 09:31:20 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/12/10 13:25:20 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ char	*ft_strdup(const char *s1)
 
 	dest = malloc((ft_strlen(s1) + 1) * sizeof(char));
 	if (!dest)
-	{
-		errno = ENOMEM;
 		return (NULL);
-	}
 	a = 0;
 	while (s1[a] != '\0')
 	{

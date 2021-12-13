@@ -6,7 +6,7 @@
 /*   By: mkoyamba <mkoyamba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 09:45:03 by mkoyamba          #+#    #+#             */
-/*   Updated: 2021/12/03 12:33:24 by mkoyamba         ###   ########.fr       */
+/*   Updated: 2021/12/13 11:44:36 by mkoyamba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	begin;
 	size_t	end;
-	char	*result;
 
 	if (!s1)
 		return (NULL);
@@ -38,16 +37,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return ((char *)s1);
 	begin = 0;
 	end = ft_strlen(s1);
-	while (mk_isinset(s1[begin], set))
+	while (s1[begin] && mk_isinset(s1[begin], set))
 		begin++;
-	while (mk_isinset(s1[end - 1], set))
+	while (end > 1 && mk_isinset(s1[end - 1], set))
 		end--;
 	if (begin == ft_strlen(s1))
-	{
-		result = ft_strdup("");
-		if (!result)
-			return (NULL);
-		return (result);
-	}
+		return (ft_strdup(""));
 	return (ft_substr(s1, begin, end - begin));
 }
